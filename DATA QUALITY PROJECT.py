@@ -9,33 +9,26 @@ import pyautogui
 import time
 import pandas as pd
 
-#use below function to get cell location
+#use below function to get cell location (x,y)
 print(pyautogui.position())
 test_for_reorder=pd.read_excel(r"C:\Users\Tiange.Hou\Desktop\test_auto_file.xlsx","tab_name",dtype=str, keep_default_na=False)
-num_row = len(test_for_reorder['ITEM_NBR'])
+num_row = len(test_for_reorder['NAME'])
 #print(num_row)
-new_row = 0
-
 group_infor=[]
 new_row=0
-pyautogui.click(x=1398, y=-93)
+pyautogui.click(x, y) #this x, y is the start place you want to add your first NAME
 time.sleep(0.8)
 for ind in range(1, num_row):
-    if test_for_reorder['ITEM_NBR'][ind-1]!=test_for_reorder['ITEM_NBR'][ind]:
-        use_append=test_for_reorder['VN_1'][new_row:ind]
-        #pyautogui.click(x=1516, y=-245)
-        #time.sleep(0.8)
-        pyautogui.typewrite(test_for_reorder['ITEM_NBR'][ind-1])
+    if test_for_reorder['NAME'][ind-1]!=test_file['NAME'][ind]:
+        use_append=test_file['INFORMATION'][new_row:ind]
+        pyautogui.typewrite(test_file['NAME'][ind-1])
         time.sleep(0.8)
         pyautogui.press('tab')
         time.sleep(0.8)
         for vn_nbr in use_append:           
-            pyautogui.typewrite(vn_nbr)
+            pyautogui.typewrite(INFORMATION)
             time.sleep(0.8)
             pyautogui.press('down')
             time.sleep(0.5)
-        #pyautogui.press('enter')
-        #time.sleep(0.8)
         pyautogui.press('left')
         time.sleep(0.8)
-  
